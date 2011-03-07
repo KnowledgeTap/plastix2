@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parentid: 1
+  name: MyString
+  model: MyString
+  ports: MyString
+  valve: MyString
+  color: MyString
+  price: MyString
+
+two:
+  parentid: 1
+  name: MyString
+  model: MyString
+  ports: MyString
+  valve: MyString
+  color: MyString
+  price: MyString

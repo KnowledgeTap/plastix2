@@ -1,4 +1,8 @@
 Plastix2::Application.routes.draw do
+  resources :products
+
+  resources :categories
+
   resources :homes
 
   # The priority is based upon order of creation:

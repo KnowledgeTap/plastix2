@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p><b>Category:</b>
+  <%= @category.name %>
+</p>
+
+<p>
+  <% if !@category.parentid.nil? %>
+  	<% @categories.each do |category| %>
+  		<% if category.id == @category.parentid %>
+  			<b>Parent Category:</b> <%= category.name %>
+  		<% end %>
+  	<% end %>
+  <% end %>  
+</p>
+<p><b>Sub Category:</b> 
+<% @subcategories = [] %>
+<% catArray = Array.new %>
+<% if !@categories.nil? %>
+<% @categories.each do |category| %>
+  	<% if category.parentid == @category.id %>
+  		
+  			<!-- <% @subcategories << category.name %>-->
+  		
+			<% catArray.push(category.name) %>
+	<% end %>
+	<% end %>
+
+			<% unless catArray.empty? %>
+				<%= catArray.join(", ") %>
+			<% end %>
+			
+
+<% end %>  		
+  		
+  		
+  		
+  		
+  		
+  		
+  		
+  	
+  	<!--
+<b>Sub Category:</b> <%= @subcategories %> -->
+</p>
+<%= link_to 'Add Sub Category',  new_category_path(:parent => params[:id])  %> |
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

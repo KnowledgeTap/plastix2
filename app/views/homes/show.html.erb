@@ -9,7 +9,31 @@
   <b>Main:</b>
   <%= @home.main %>
 </p>
+<div class="rightcolumn">
+<b>Create a new category</b>
+<a href = "#" class= "addWidget" value = "Add Widget">add</a>
+<script type="text/javascript">
+$('.addWidget').click(function(){
+    $(this).append("<%= render "categories/form.html" %>");
+});
+</script>
 
-
+<%=  render "categories/form.html"  %>
+<br />
+<b>Choose a category:</b>
+<%= select_tag 'category', options_from_collection_for_select(@categories, 'id', 'name') %>
+<br />
+<b>Create a sub category</b>
+<%=  render "categories/form.html"  %>
+<br />
+<b>Create a new product</b>
+<%=  render "products/form.html"  %>
+<br />
+<b> Choose a product</b>
+<%= select_tag 'product', options_from_collection_for_select(@products, 'id', 'name') %>
+<br />
+<b>Create a new product variation</b>
+<%=  render "products/form.html"  %>
+</div>
 <%= link_to 'Edit', edit_home_path(@home) %> |
 <%= link_to 'Back', homes_path %>
