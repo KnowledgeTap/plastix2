@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div class="leftcolumn">
 <p>
   <b>Name:</b>
   <%= @home.name %>
@@ -9,31 +9,91 @@
   <b>Main:</b>
   <%= @home.main %>
 </p>
+<br /><br /><br /><br /><br /><br /><br />
+<p>
+As choices are made on the right, what is chosen will appear here.
+</p>
+<%= link_to 'Edit', edit_home_path(@home) %> |
+<%= link_to 'Back', homes_path %>
+</div>
 <div class="rightcolumn">
-<b>Create a new category</b>
-<a href = "#" class= "addWidget" value = "Add Widget">add</a>
-<script type="text/javascript">
-$('.addWidget').click(function(){
-    $(this).append("<%= render "categories/form.html" %>");
+
+<%= link_to "Create a New Category", '#', :class => 'addWidget', :remote => true %>
+
+<script>
+	jQuery(function($) {
+	$('.addWidget').click(function(){
+	$( "#preview" ).html( "<%= escape_javascript( render( :partial => "categories/form.html" ) ) %>" );
+});
 });
 </script>
 
-<%=  render "categories/form.html"  %>
+<div id="preview"></div>
+
 <br />
 <b>Choose a category:</b>
 <%= select_tag 'category', options_from_collection_for_select(@categories, 'id', 'name') %>
 <br />
-<b>Create a sub category</b>
-<%=  render "categories/form.html"  %>
+
+<%= link_to "Create a New Sub Category", '#', :class => 'addWidget2', :remote => true %>
+
+<script>
+	jQuery(function($) {
+	$('.addWidget2').click(function(){
+	$( "#preview2" ).html( "<%= escape_javascript( render( :partial => "categories/form.html" ) ) %>" );
+});
+});
+</script>
+
+<div id="preview2"></div>
 <br />
-<b>Create a new product</b>
-<%=  render "products/form.html"  %>
+
+<%= link_to "Create a New Sub Sub Category", '#', :class => 'addWidget3', :remote => true %>
+
+<script>
+	jQuery(function($) {
+	$('.addWidget3').click(function(){
+	$( "#preview3" ).html( "<%= escape_javascript( render( :partial => "categories/form.html" ) ) %>" );
+});
+});
+</script>
+
+<div id="preview3"></div>
+
+
+<br />
+<br />
+
+<%= link_to "Create a New Product", '#', :class => 'addWidget4', :remote => true %>
+
+<script>
+	jQuery(function($) {
+	$('.addWidget4').click(function(){
+	$( "#preview4" ).html( "<%= escape_javascript( render( :partial => "products/form.html" ) ) %>" );
+});
+});
+</script>
+
+<div id="preview4"></div>
+
+
 <br />
 <b> Choose a product</b>
 <%= select_tag 'product', options_from_collection_for_select(@products, 'id', 'name') %>
 <br />
-<b>Create a new product variation</b>
-<%=  render "products/form.html"  %>
+
+<%= link_to "Create a New Product Variation", '#', :class => 'addWidget5', :remote => true %>
+
+<script>
+	jQuery(function($) {
+	$('.addWidget5').click(function(){
+	$( "#preview5" ).html( "<%= escape_javascript( render( :partial => "products/form.html" ) ) %>" );
+});
+});
+</script>
+
+<div id="preview5"></div>
+
 </div>
-<%= link_to 'Edit', edit_home_path(@home) %> |
-<%= link_to 'Back', homes_path %>
+
+

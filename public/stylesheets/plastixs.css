@@ -1,6 +1,12 @@
+.leftcolumn{
+float:left;
+text-align:left;
+width:40%;
+}
+
 .rightcolumn{
 float:right;
 text-align:left;
-width:50%;
+width:40%;
 
 }
