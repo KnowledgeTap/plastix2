@@ -46,7 +46,7 @@
 
 <br />
 <b>Choose a category:</b>
-<%= select_tag 'category2', options_from_collection_for_select(@categories, 'id', 'name'), :include_blank => 'None', :remote => true %>
+<%= select_tag 'category2', options_from_collection_for_select(@categoryinit, 'id', 'name'), :include_blank => 'None', :remote => true %>
 <br />
 <script>
 jQuery(function($) {

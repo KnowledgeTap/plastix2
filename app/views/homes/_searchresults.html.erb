@@ -35,14 +35,10 @@
 </script>
 
 <div id="preview"></div>
-<br />
-
-
-or 
-
-<br />
 
 <% if !@categoryname.nil? %>	
+
+
 	<% @subcatlist=[] %>
 	<% @categories.each do |category| %>
 		<% if category.parentid == @categoryname.id %>
@@ -53,6 +49,12 @@ or
 	<% if !@subcatlist.empty? %> <!-- Then there is a sub category -->
 	
 	
+<br />
+
+
+or 
+
+<br />
 
 		
 		

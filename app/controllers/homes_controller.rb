@@ -18,6 +18,17 @@ class HomesController < ApplicationController
     #@phrase = Category.search(params[:category]) #".search method is in the Model"
     
 	@categories = Category.all
+	#@categories = Category.find(:all) #, :conditions => ['parentid=?', nil]) 
+	
+	@categoryinit = []
+	@categories.each do |category|
+	if category.parentid.nil?
+	@categoryinit << category
+	
+	end
+	end
+	
+	
     @category = Category.new
     @products = Product.all
     @product = Product.new
@@ -31,9 +42,7 @@ class HomesController < ApplicationController
   # GET /homes/new.xml
   def new
   @test=params[:id]
-  puts 'This is :parent'
-puts @test
-
+ 
     @home = Home.new
 
     respond_to do |format|
@@ -81,11 +90,9 @@ puts @test
 
 # Search
 def search
-puts "You are in the search method"
-	@test=params[:parent]
-  puts 'This is :parent'
-puts @test
 
+	@test=params[:parent]
+ 
 	@categories = Category.all
 	@category = Category.new
 	#@products = Product.all
@@ -105,10 +112,9 @@ if !params[:id].nil?
 end       
 
 def search2
-puts "You are in the search2 method"
+
 @test=params[:parent]
-  puts 'This is :parent'
-puts @test
+  
 	@product = Product.new
 if !params[:id].nil?
     @phrase2 = params[:id] 
@@ -116,8 +122,7 @@ if !params[:id].nil?
     @parentcat = Category.find(@productname.category_id)
     @parentcat2 = Category.find(@parentcat.parentid)
     @parentcat3 = Category.find(@parentcat2.parentid)
-    puts 'This is the parent product:'
-    puts @productname.name
+    
     render :partial => 'searchresults2'
 
   end
@@ -125,9 +130,7 @@ if !params[:id].nil?
 end       
 
 def search3
-puts "You are in the search3 method"
-puts "This is params[:id]"
-puts params[:id]
+
 	#@products = Product.all
     @product = Product.new
 	@category = Category.new
@@ -137,8 +140,7 @@ if !params[:id].nil?
     @categoryname2 = Category.find(@phrase3)
     @products =Product.find(:all, :conditions => ['category_id=?', @categoryname2.id])   
 	@parentcat = Category.find(@categoryname2.parentid)
-    puts "This is categoryname2"
-    puts @categoryname2
+    
     render :partial => 'searchresults3'
 
   end
@@ -146,9 +148,7 @@ if !params[:id].nil?
 end       
 
 def search4
-puts "You are in the search4 method"
-puts "This is params[:id]"
-puts params[:id]
+
 	@products = Product.all
     @product = Product.new
 	@categories = Category.all
@@ -159,8 +159,7 @@ if !params[:id].nil?
     @parentcat2 = Category.find(@parentcat.parentid)
     @products =Product.find(:all, :conditions => ['category_id=?', @categoryname3.id])
     
-    puts "This is categoryname3"
-    puts @categoryname3
+    
     render :partial => 'searchresults4'
 
   end
