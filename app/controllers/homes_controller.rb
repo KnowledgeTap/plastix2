@@ -14,6 +14,9 @@ class HomesController < ApplicationController
   # GET /homes/1.xml
   def show
     @home = Home.find(params[:id])
+    
+    #@phrase = Category.search(params[:category]) #".search method is in the Model"
+    
 	@categories = Category.all
     @category = Category.new
     @products = Product.all
@@ -27,6 +30,10 @@ class HomesController < ApplicationController
   # GET /homes/new
   # GET /homes/new.xml
   def new
+  @test=params[:id]
+  puts 'This is :parent'
+puts @test
+
     @home = Home.new
 
     respond_to do |format|
@@ -71,6 +78,100 @@ class HomesController < ApplicationController
       end
     end
   end
+
+# Search
+def search
+puts "You are in the search method"
+	@test=params[:parent]
+  puts 'This is :parent'
+puts @test
+
+	@categories = Category.all
+	@category = Category.new
+	#@products = Product.all
+    @product = Product.new
+
+if !params[:id].nil?
+    @phrase = params[:id] 
+    @categoryname = Category.find(@phrase)
+    @products =Product.find(:all, :conditions => ['category_id=?', @categoryname.id])   
+
+    #render :partial => 'chosencat'
+    render :partial => 'searchresults'
+
+  end
+  
+     
+end       
+
+def search2
+puts "You are in the search2 method"
+@test=params[:parent]
+  puts 'This is :parent'
+puts @test
+	@product = Product.new
+if !params[:id].nil?
+    @phrase2 = params[:id] 
+    @productname = Product.find(@phrase2)
+    @parentcat = Category.find(@productname.category_id)
+    @parentcat2 = Category.find(@parentcat.parentid)
+    @parentcat3 = Category.find(@parentcat2.parentid)
+    puts 'This is the parent product:'
+    puts @productname.name
+    render :partial => 'searchresults2'
+
+  end
+          
+end       
+
+def search3
+puts "You are in the search3 method"
+puts "This is params[:id]"
+puts params[:id]
+	#@products = Product.all
+    @product = Product.new
+	@category = Category.new
+	@categories = Category.all
+if !params[:id].nil?
+    @phrase3 = params[:id] 
+    @categoryname2 = Category.find(@phrase3)
+    @products =Product.find(:all, :conditions => ['category_id=?', @categoryname2.id])   
+	@parentcat = Category.find(@categoryname2.parentid)
+    puts "This is categoryname2"
+    puts @categoryname2
+    render :partial => 'searchresults3'
+
+  end
+          
+end       
+
+def search4
+puts "You are in the search4 method"
+puts "This is params[:id]"
+puts params[:id]
+	@products = Product.all
+    @product = Product.new
+	@categories = Category.all
+if !params[:id].nil?
+    @phrase4 = params[:id] 
+    @categoryname3 = Category.find(@phrase4)
+    @parentcat = Category.find(@categoryname3.parentid)
+    @parentcat2 = Category.find(@parentcat.parentid)
+    @products =Product.find(:all, :conditions => ['category_id=?', @categoryname3.id])
+    
+    puts "This is categoryname3"
+    puts @categoryname3
+    render :partial => 'searchresults4'
+
+  end
+          
+end       
+
+
+def choosecat
+	render :partial => 'chosencat'
+
+end
 
   # DELETE /homes/1
   # DELETE /homes/1.xml

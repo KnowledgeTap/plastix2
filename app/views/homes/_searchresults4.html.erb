@@ -1,0 +1,62 @@
+<div id="choose1">
+<% if !@categoryname3.nil? %>
+<b>Category chosen: </b>
+	<%= @parentcat2.name %><br />	
+<% end %>
+</div>
+<div id="choose2">
+<% if !@categoryname3.nil? %>
+<b>Sub Category chosen: </b>
+	<%= @parentcat.name %><br />	
+<% end %>
+</div>
+
+
+<b>Sub sub Category Chosen:</b>
+
+<% if !@categoryname3.nil? %>
+	<%= @categoryname3.name %>
+<% end %>
+<br />		
+<br />
+<% if !@categoryname3.nil? %>
+<%= link_to "Create a New Product", '#', :class => 'addWidget4', :"data-cat-id" => @categoryname3.id, :include_blank => 'None', :remote => true %>
+<% end %>
+<script>
+	jQuery(function($) {
+	$('.addWidget4').click(function(){
+	($(this).attr('data-cat-id'));
+	$( "#preview" ).html( "<%= escape_javascript( render( :partial => "products/form.html" ) ) %>" );
+});
+});
+</script>
+
+<div id="preview"></div>
+
+
+or
+<br />
+<b> Choose a product</b> 
+
+
+<%= select_tag 'product2', options_from_collection_for_select(@products, 'id', 'name'), :include_blank => 'None', :remote => true %>
+
+<br />
+<script>
+jQuery(function($) {
+	$('#product2').click(function() {
+   //$(this).css("backgroundColor", "blue");
+   
+   var country = $('select#product2 :selected').val();
+    if(country == "") country="0";
+   
+   jQuery.get('/homes/search2/' +  country, function(data){
+        $("#results").html(data);   
+      })
+    return false;
+ });
+ });  
+
+
+</script>
+<div id="results"></div>

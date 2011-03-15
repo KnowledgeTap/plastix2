@@ -1,0 +1,2 @@
+This is the searchresults partial
+<%= @phrase.name %>

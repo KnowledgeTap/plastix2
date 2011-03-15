@@ -25,6 +25,15 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
+    @test=params[:id]
+    if !@test.nil?
+    @parentprod = Product.find(@test)
+    end
+    puts 'You are in product new'
+  puts 'This is :parent'
+  	@parentprod.name
+  
+puts @test
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +53,9 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
+      	format.html { redirect_to(:controller => 'homes', :action => 'show', :id => '1', :notice => 'Product was successfully created.') }
+
+        #format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
         format.html { render :action => "new" }

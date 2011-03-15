@@ -1,0 +1,141 @@
+<div id="choose1">
+<% if !@categoryname.nil? %>
+<b>Category chosen: </b>
+	<%= @categoryname.name %><br />	
+<% end %>
+</div>
+<div id="choose2">
+<% if !@categoryname2.nil? %>
+<b>Sub Category chosen: </b>
+	<%= @categoryname2.name %><br />	
+<% end %>
+</div>
+<br />
+
+
+
+<% if !@categoryname.nil? %>
+
+
+<%= link_to "Create a New Sub Category", '#', :class => 'addWidget2', :"data-parent-id" => @categoryname.id, :remote => true %>
+
+<% else %>
+<%= link_to "Create a New Sub Category", '#', :class => 'addWidget2', :remote => true %>
+<% end %>
+<script>
+	jQuery(function($) {
+	$('.addWidget2').click(function(){
+	($(this).attr('data-parent-id'));
+	$( "#preview" ).html( "<%= escape_javascript( render( :partial => "categories/form.html" )) %>" );
+	
+
+
+});
+});
+</script>
+
+<div id="preview"></div>
+<br />
+
+
+or 
+
+<br />
+
+<% if !@categoryname.nil? %>	
+	<% @subcatlist=[] %>
+	<% @categories.each do |category| %>
+		<% if category.parentid == @categoryname.id %>
+			<% @subcatlist << category %>
+		<% end %>
+	<% end %>
+
+	<% if !@subcatlist.empty? %> <!-- Then there is a sub category -->
+	
+	
+
+		
+		
+	<br /><b>Choose a sub category:</b>
+	<%= select_tag 'subcat', options_from_collection_for_select(@subcatlist, 'id', 'name'), :include_blank => 'None', :remote => true %>
+<br />
+<script>
+jQuery(function($) {
+	$('#subcat').change(function() {
+   //$(this).css("backgroundColor", "blue");
+   
+   var country = $('select#subcat :selected').val();
+    if(country == "") country="0";
+   
+   jQuery.get('/homes/search3/' +  country, function(data){
+        $("#results").html(data);   
+      })
+    return false;
+ });
+ });  
+</script>
+<div id='results4'></div>	
+		
+		
+		
+		
+	<% end %>
+<% end %>
+
+
+<% if !@categoryname2.nil? %>
+This is getting refreshed
+<%= @categoryname2.name %>
+<% end %>
+
+<% if !@categoryname.nil? && @categoryname2.nil? %>
+
+<br />
+or
+<br />
+
+<%= link_to "Create a New Product", '#', :class => 'addWidget4', :"data-cat-id" => @categoryname.id, :include_blank => 'None', :remote => true %>
+<% end %>
+<script>
+	jQuery(function($) {
+	$('.addWidget4').click(function(){
+	($(this).attr('data-cat-id'));
+	$( "#preview" ).html( "<%= escape_javascript( render( :partial => "products/form.html" ) ) %>" );
+});
+});
+</script>
+
+<div id="preview"></div>
+
+
+
+
+<% if !@categoryname.nil? %>
+<br />
+or
+<br />
+<b> Choose a product</b>
+
+
+<%= select_tag 'product2', options_from_collection_for_select(@products, 'id', 'name'), :include_blank => 'None', :remote => true %>
+
+<br />
+<script>
+jQuery(function($) {
+	$('#product2').click(function() {
+   //$(this).css("backgroundColor", "blue");
+   
+   var country = $('select#product2 :selected').val();
+    if(country == "") country="0";
+   
+   jQuery.get('/homes/search2/' +  country, function(data){
+        $("#results2").html(data);   
+      })
+    return false;
+ });
+ });  
+
+
+</script>
+<div id="results2"></div>
+<% end %>

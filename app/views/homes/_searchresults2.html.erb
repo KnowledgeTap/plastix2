@@ -1,0 +1,41 @@
+<div id="choose1">
+<% if !@productname.nil? %>
+<b>Category chosen: </b>
+	<%= @parentcat3.name %><br />	
+<% end %>
+</div>
+<div id="choose2">
+<% if !@productname.nil? %>
+<b>Sub Category chosen: </b>
+	<%= @parentcat2.name %><br />	
+<% end %>
+</div>
+
+
+<b>Sub sub Category Chosen:</b>
+
+<% if !@productname.nil? %>
+	<%= @parentcat.name %>
+<% end %>
+
+<br />
+<b>Product chosen:</b>
+<% if !@productname.nil? %>
+<%= @productname.name %>
+<% end %>
+<br />
+<br />
+<% if !@productname.nil? %>
+<%= link_to "Create a New Product Variation", '#', :class => 'addWidget5', :"data-product-id" => @productname.id, :remote => true %>
+
+<script>
+	jQuery(function($) {
+	$('.addWidget5').click(function(){
+	($(this).attr('data-product-id'));
+	$( "#preview5" ).html( "<%= escape_javascript( render( :partial => "products/form.html" ) ) %>" );
+});
+});
+</script>
+
+<div id="preview5"></div>
+<% end %>

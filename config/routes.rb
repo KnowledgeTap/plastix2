@@ -4,6 +4,11 @@ Plastix2::Application.routes.draw do
   resources :categories
 
   resources :homes
+	match '/homes/search/:id', :controller =>'homes', :action => 'search'
+	match '/homes/search2/:id', :controller =>'homes', :action => 'search2'
+	match '/homes/search3/:id', :controller =>'homes', :action => 'search3'
+	match '/homes/search4/:id', :controller =>'homes', :action => 'search4'
+	match '/homes/choose/:id', :controller =>'homes', :action => 'choosecat'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

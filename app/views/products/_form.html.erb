@@ -10,10 +10,19 @@
       </ul>
     </div>
   <% end %>
+  
+  <% if !@productname.nil? %>
+  <%= @productname.name %><%= @productname.category_id %>
+  <% end %>
 
   <div class="field">
     <%= f.label :parentid %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :parentid, :value => params[:id] %>
+    <% else %>
     <%= f.text_field :parentid %>
+    <% end %>
+    
   </div>
   <div class="field">
     <%= f.label :name %><br />
@@ -41,7 +50,11 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.text_field :category_id %>
+    <% if !@productname.nil? %>
+    <%= f.text_field :category_id, :value => @productname.category_id %>
+    <% else %>
+    <%= f.text_field :category_id, :value => params[:id] %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

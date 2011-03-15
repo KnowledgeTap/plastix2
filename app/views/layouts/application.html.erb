@@ -9,6 +9,12 @@
   <%= javascript_include_tag 'rails' %>
   <%= csrf_meta_tag %>
   
+  
+  <script>
+    function respondToChange() {
+    $('category').up('form').submit()            // The ".up finds the form in the DOM"
+    };
+    </script>
 
 
 
