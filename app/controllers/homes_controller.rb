@@ -119,9 +119,16 @@ def search2
 if !params[:id].nil?
     @phrase2 = params[:id] 
     @productname = Product.find(@phrase2)
+    if !@productname.category_id.nil?
     @parentcat = Category.find(@productname.category_id)
+    
+    if !@parentcat.parentid.nil?
     @parentcat2 = Category.find(@parentcat.parentid)
+    if !@parentcat2.parentid.nil?
     @parentcat3 = Category.find(@parentcat2.parentid)
+    end
+    end
+    end
     
     render :partial => 'searchresults2'
 

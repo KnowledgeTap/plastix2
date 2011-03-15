@@ -1,13 +1,17 @@
 <div id="choose1">
 <% if !@productname.nil? %>
 <b>Category chosen: </b>
+<% if !@parentcat3.nil? %>
 	<%= @parentcat3.name %><br />	
+<% end %>	
 <% end %>
 </div>
 <div id="choose2">
 <% if !@productname.nil? %>
 <b>Sub Category chosen: </b>
+<% if !@parentcat2.nil? %>
 	<%= @parentcat2.name %><br />	
+<% end %>	
 <% end %>
 </div>
 
@@ -15,7 +19,9 @@
 <b>Sub sub Category Chosen:</b>
 
 <% if !@productname.nil? %>
+<% if !@parentcat.nil? %>
 	<%= @parentcat.name %>
+<% end %>	
 <% end %>
 
 <br />
