@@ -16,7 +16,7 @@
   <div class="field">
     <!-- <%= f.label :parentid %><br /> -->
     <% if !@productname.nil? %>
-    <%= f.hidden_field :parentid, :value => params[:id] %>
+    <%= f.hidden_field :parentid %>
     <% else %>
     <%= f.hidden_field :parentid %>
     <% end %>
@@ -63,7 +63,7 @@
     <% if !@productname.nil? %>
     <%= f.hidden_field :category_id, :value => @productname.category_id %>
     <% else %>
-    <%= f.hidden_field :category_id, :value => params[:id] %>
+    <%= f.hidden_field :category_id %>
     <% end %>
   </div>
   <div class="actions">

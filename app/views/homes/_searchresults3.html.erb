@@ -33,7 +33,7 @@
 
 <div id="preview"></div>
 
-<br />or<br />
+
 
 
 
@@ -47,7 +47,7 @@
 
 	<% if !@subcatlist2.empty? %>  <!-- then there is a sub sub category -->
 	
-	
+	<br />or<br />
 		
 	<br /><b>Choose a Sub Sub category:</b>
 <%= select_tag 'subsubcat', options_from_collection_for_select(@subcatlist2, 'id', 'name'), :include_blank => 'None', :remote => true %>
@@ -90,7 +90,7 @@ or
 
 <div id="preview"></div>
 
-
+<% if !@products.nil? %>
 
 <br />
 or
@@ -119,4 +119,4 @@ jQuery(function($) {
 
 </script>
 <div id="results"></div>
-
+<% end %>
