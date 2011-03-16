@@ -131,7 +131,7 @@ jQuery(function($) {
     if(country == "") country="0";
    
    jQuery.get('/homes/search2/' +  country, function(data){
-        $("#results2").html(data);   
+        $("#results").html(data);   
       })
     return false;
  });
@@ -139,5 +139,5 @@ jQuery(function($) {
 
 
 </script>
-<div id="results2"></div>
+<div id="results"></div>
 <% end %>

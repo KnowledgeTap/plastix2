@@ -2,26 +2,48 @@
 <% if !@productname.nil? %>
 <b>Category chosen: </b>
 <% if !@parentcat3.nil? %>
-	<%= @parentcat3.name %><br />	
+	<%= @parentcat3.name %><br />
+
+<% elsif !@parentcat2.nil? %>
+	<%= @parentcat2.name %><br />
+	
+<% else %>
+	<% if !@parentcat.nil? %>
+		<%= @parentcat.name %>
+	<% end %>
 <% end %>	
 <% end %>
 </div>
 <div id="choose2">
 <% if !@productname.nil? %>
 <b>Sub Category chosen: </b>
-<% if !@parentcat2.nil? %>
-	<%= @parentcat2.name %><br />	
+<% if !@parentcat3.nil? %>
+	
+	<% if !@parentcat2.nil? %>
+		<%= @parentcat2.name %><br />
+	<% end %>	
+<% else %>
+	<% if !@parentcat2.nil? %>
+	<% if !@parentcat.nil? %>
+		<%= @parentcat.name %>
+	<% end %>
+	<% end %>
 <% end %>	
 <% end %>
 </div>
 
 
-<b>Sub sub Category Chosen:</b>
+<b>Sub sub Category chosen:</b>
 
 <% if !@productname.nil? %>
+<% if @parentcat3.nil?  || @parentcat2.nil? %>
+
+
+<% else %>
 <% if !@parentcat.nil? %>
 	<%= @parentcat.name %>
 <% end %>	
+<% end %>
 <% end %>
 
 <br />
