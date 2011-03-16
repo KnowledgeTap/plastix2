@@ -101,7 +101,18 @@ def search
 if !params[:id].nil?
     @phrase = params[:id] 
     @categoryname = Category.find(@phrase)
-    @products =Product.find(:all, :conditions => ['category_id=?', @categoryname.id])   
+    @products2 =Product.find(:all, :conditions => ['category_id=?', @categoryname.id])   
+
+	@products = []
+	@products2.each do |products2|
+	puts products2.name
+	puts products2.parentid
+	if products2.parentid.nil?
+	@products << products2
+	
+	end
+	end
+
 
     #render :partial => 'chosencat'
     render :partial => 'searchresults'
@@ -119,6 +130,9 @@ def search2
 if !params[:id].nil?
     @phrase2 = params[:id] 
     @productname = Product.find(@phrase2)
+    
+    
+    
     if !@productname.category_id.nil?
     @parentcat = Category.find(@productname.category_id)
     
@@ -129,6 +143,13 @@ if !params[:id].nil?
     end
     end
     end
+    
+    
+    
+    @prodvar= Product.find(:all, :conditions => ['parentid=?', @productname.id])
+    
+    
+    
     
     render :partial => 'searchresults2'
 
@@ -145,8 +166,20 @@ def search3
 if !params[:id].nil?
     @phrase3 = params[:id] 
     @categoryname2 = Category.find(@phrase3)
-    @products =Product.find(:all, :conditions => ['category_id=?', @categoryname2.id])   
+    @products2 =Product.find(:all, :conditions => ['category_id=?', @categoryname2.id])   
 	@parentcat = Category.find(@categoryname2.parentid)
+    
+    
+    @products = []
+	@products2.each do |products2|
+	puts products2.name
+	puts products2.parentid
+	if products2.parentid.nil?
+	@products << products2
+	
+	end
+	end
+    
     
     render :partial => 'searchresults3'
 
@@ -164,7 +197,18 @@ if !params[:id].nil?
     @categoryname3 = Category.find(@phrase4)
     @parentcat = Category.find(@categoryname3.parentid)
     @parentcat2 = Category.find(@parentcat.parentid)
-    @products =Product.find(:all, :conditions => ['category_id=?', @categoryname3.id])
+    @products2 =Product.find(:all, :conditions => ['category_id=?', @categoryname3.id])
+    
+    
+    @products = []
+	@products2.each do |products2|
+	puts products2.name
+	puts products2.parentid
+	if products2.parentid.nil?
+	@products << products2
+	
+	end
+	end
     
     
     render :partial => 'searchresults4'
@@ -178,6 +222,23 @@ def choosecat
 	render :partial => 'chosencat'
 
 end
+
+def copy
+	
+	if !params[:id].nil?
+    @phrase2 = params[:id] 
+    @productname = Product.find(@phrase2)
+	end
+	
+	@products = Product.all
+    @product = Product.new
+	@categories = Category.all
+	
+	render :partial => '/products/copy.html'
+
+end
+
+
 
   # DELETE /homes/1
   # DELETE /homes/1.xml

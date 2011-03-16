@@ -9,6 +9,7 @@ Plastix2::Application.routes.draw do
 	match '/homes/search3/:id', :controller =>'homes', :action => 'search3'
 	match '/homes/search4/:id', :controller =>'homes', :action => 'search4'
 	match '/homes/choose/:id', :controller =>'homes', :action => 'choosecat'
+	match '/homes/copy/:id', :controller =>'homes', :action => 'copy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

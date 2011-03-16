@@ -12,11 +12,12 @@
   <% end %>
   
   
+<b>Please change all fields for your variation</b><br />
 
   <div class="field">
     <!-- <%= f.label :parentid %><br /> -->
     <% if !@productname.nil? %>
-    <%= f.hidden_field :parentid %>
+    <%= f.hidden_field :parentid, :value => @productname.parentid %>
     <% else %>
     <%= f.hidden_field :parentid %>
     <% end %>

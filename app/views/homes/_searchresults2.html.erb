@@ -67,3 +67,24 @@
 
 <div id="preview5"></div>
 <% end %>
+
+<br /><b>Choose a Product Variation to Copy:</b>
+<%= select_tag 'copyprod', options_from_collection_for_select(@prodvar, 'id', 'name'), :include_blank => 'None', :remote => true %>
+<br />
+
+<script>
+jQuery(function($) {
+	$('#copyprod').change(function() {
+   //$(this).css("backgroundColor", "blue");
+   
+   var country = $('select#copyprod :selected').val();
+    if(country == "") country="0";
+   
+   jQuery.get('/homes/copy/' +  country, function(data){
+        $("#results").html(data);   
+      })
+    return false;
+ });
+ });  
+</script>
+<div id='results'></div>	

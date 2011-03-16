@@ -33,30 +33,123 @@
   <div class="field">
     <%= f.label :description %><br />
     <% if !@productname.nil? %>
-    <%= f.text_area :name, :value => @productname.description %>
+    <%= f.text_area :description, :value => @productname.description %>
     <% else %>
     <%= f.text_area :description %>
     <% end %>
   </div>
   <div class="field">
-    <%= f.label :model %><br />
-    <%= f.text_field :model %>
+    <%= f.label :type %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :prodtype, :value => @productname.prodtype %>
+    <% else %>
+    <%= f.text_field :prodtype %>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :ports %><br />
-    <%= f.text_field :ports %>
+    <%= f.label :style %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :style, :value => @productname.style %>
+    <% else %>
+    <%= f.text_field :style %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :inlet %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :inlet, :value => @productname.inlet %>
+    <% else %>
+    <%= f.text_field :inlet %>
+    <% end %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :model %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :model, :value => @productname.model %>
+    <% else %>
+    <%= f.text_field :model %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :ports %>Port Size<br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :ports, :value => @productname.ports %>
+    <% else %>
+     <%= f.text_field :ports %>
+     <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :portno %>No. of Ports<br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :portno, :value => @productname.portno %>
+    <% else %>
+    <%= f.text_field :portno %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :valve %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :valve, :value => @productname.valve %>
+    <% else %>
     <%= f.text_field :valve %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :color %><br />
-    <%= f.text_field :color %>
+    <% if !@productname.nil? %>
+    <%= f.text_field :color, :value => @productname.color %>
+    <% else %>
+     <%= f.text_field :color %>
+     <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :hose %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :hose, :value => @productname.hose %>
+    <% else %>
+    <%= f.text_field :hose %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :plug %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :plug, :value => @productname.plug %>
+    <% else %>
+    <%= f.text_field :plug %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :weight, :value => @productname.weight %>
+    <% else %>
+    <%= f.text_field :weight %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :quanity %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :quanity, :value => @productname.quanity %>
+    <% else %>
+    <%= f.text_field :quanity %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :partno %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :partno, :value => @productname.partno %>
+    <% else %>
+    <%= f.text_field :partno %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :price %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :price, :value => @productname.price %>
+    <% else %>
     <%= f.text_field :price %>
+    <% end %>
   </div>
   <div class="field">
     <!-- <%= f.label :category_id %><br />  -->
