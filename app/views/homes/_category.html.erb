@@ -1,4 +1,9 @@
 <% if !@category2.nil? %>
+<div class="leftcolumn2">
+<%= image_tag ("/images/mani_loaded.jpg") %><br />
+<%= link_to "View Quote Form", "/quoteform.pdf" %><br />
+</div>
+<div class="rightcolumn2">
 <div id="choose1">
 <% if !@category2.nil? %>
 <b>Main Category: </b>
@@ -52,6 +57,8 @@
 	<% end %>
 	
 </div>
+</div>
+<div class="list">
 <% if !@category2.nil? %>
 <p>
 <%= link_to "Upload an image for this category", "#" %> | 
@@ -132,4 +139,4 @@
 </div>
 <% end %>
 <% end %>
-
+</div>
