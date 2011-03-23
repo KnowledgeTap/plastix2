@@ -1,7 +1,14 @@
+body{
+	margin: 0 auto;
+	margin-top: 1%;
+	width:900px;
+}
+
+
 .leftcolumn{
 float:left;
 text-align:left;
-width:50%;
+width:60%;
 }
 
 .rightcolumn{
@@ -21,8 +28,59 @@ text-align:left;
 width:60%;
 
 }
+.rightcolumn3{
+float:right;
+text-align:right;
+width:60%;
+
+}
 .list{
 clear:both;
 float:left;
 width:100%;
+}
+#logo{
+	background: url ("/images/logoPlastixs.png");
+	background-repeat: no-repeat;
+}
+.header{
+	padding-top:65px;
+	padding-left:20px;
+}
+.menu{
+	clear:both;
+	background: url('/images/nav-bg.gif');
+	background-repeat: repeat-x;
+	height:35px;
+	padding-left:20px;
+	padding-top:5px;
+	
+	
+}
+.top{
+	background: url('/images/headerBackgroundLong.jpg');
+	background-repeat: repeat-x;
+	height:165px;
+}
+a.menuitem:link{
+	color:white;
+	font-size: 1em;
+	text-decoration:none;
+}
+a.menuitem:visited{
+	color:white;
+	font-size: 1em;
+	text-decoration:none;
+}
+a.menuitem:hover{
+	color:white;
+	font-size: 1em;
+	text-decoration:underline;
+}
+.list2{
+	
+}
+.list3{
+	#color:#AAAAFF;
+	color:#6666FF;	
 }

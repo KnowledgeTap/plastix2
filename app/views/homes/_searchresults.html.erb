@@ -1,15 +1,16 @@
-
+<div class="list2">
 <div id="choose1">
 <% if !@categoryname.nil? %>
 <b>Category chosen: </b>
-	<%= @categoryname.name %><br />	
+	<span class="list3"><%= @categoryname.name %></span><br />	
 <% end %>
 </div>
 <div id="choose2">
 <% if !@categoryname2.nil? %>
 <b>Sub Category chosen: </b>
-	<%= @categoryname2.name %><br />	
+	<span class="list3"><%= @categoryname2.name %></span><br />	
 <% end %>
+</div>
 </div>
 <br />
 

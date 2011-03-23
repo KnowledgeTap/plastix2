@@ -20,9 +20,24 @@
 
 </head>
 <body>
-<%=link_to "Home", :controller => 'homes', :action => 'show', :id => '1' %> |
-<%=link_to "Categories", categories_path %> |
-<%=link_to "Products", products_path %> 
+<div class="top">
+<div class="header">
+<div class="leftcolumn2">
+<%= image_tag ("/images/logoPlastixs.png") %>
+</div>
+<div class="rightcolumn3">
+<%= image_tag ("/images/headerTubes.png") %>
+<%= image_tag ("/images/headerAresol.png") %>
+
+<%= image_tag ("/images/headerTubesColor.png") %>
+</div>
+</div>
+<div class="menu">
+<%=link_to "Home", {:controller => "homes", :action => "show", :id => "1"}, :class => "menuitem" %> |
+<%=link_to "Categories", categories_path, :class => "menuitem" %> |
+<%=link_to "Products", products_path, :class => "menuitem" %> 
+</div>
+</div>
 <%= yield %>
 
 </body>

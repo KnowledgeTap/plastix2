@@ -1,15 +1,16 @@
+<div class="list2">
 <div id="choose1">
 <% if !@productname.nil? %>
 <b>Category chosen: </b>
 <% if !@parentcat3.nil? %>
-	<%= @parentcat3.name %><br />
+	<span class="list3"><%= @parentcat3.name %></span><br />
 
 <% elsif !@parentcat2.nil? %>
-	<%= @parentcat2.name %><br />
+	<span class="list3"><%= @parentcat2.name %></span><br />
 	
 <% else %>
 	<% if !@parentcat.nil? %>
-		<%= @parentcat.name %>
+		<span class="list3"><%= @parentcat.name %></span>
 	<% end %>
 <% end %>	
 <% end %>
@@ -20,12 +21,12 @@
 <% if !@parentcat3.nil? %>
 	
 	<% if !@parentcat2.nil? %>
-		<%= @parentcat2.name %><br />
+		<span class="list3"><%= @parentcat2.name %></span><br />
 	<% end %>	
 <% else %>
 	<% if !@parentcat2.nil? %>
 	<% if !@parentcat.nil? %>
-		<%= @parentcat.name %>
+		<span class="list3"><%= @parentcat.name %></span>
 	<% end %>
 	<% end %>
 <% end %>	
@@ -41,7 +42,7 @@
 
 <% else %>
 <% if !@parentcat.nil? %>
-	<%= @parentcat.name %>
+	<span class="list3"><%= @parentcat.name %></span>
 <% end %>	
 <% end %>
 <% end %>
@@ -49,8 +50,10 @@
 <br />
 <b>Product chosen:</b>
 <% if !@productname.nil? %>
-<%= @productname.name %>
+<span class="list3"><%= @productname.name %></span>
 <% end %>
+
+</div>
 <br />
 <br />
 <% if !@productname.nil? %>
