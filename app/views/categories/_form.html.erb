@@ -18,12 +18,20 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
     <%= f.label :parentid %><br />
     <%= f.text_field :parentid, :value => params[:id] %>
+    <% if !@test.nil? %>
+    <%= @test.name %>
+    <% end %>
     <!--
     <%= f.text_field :parentid %>
     -->
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

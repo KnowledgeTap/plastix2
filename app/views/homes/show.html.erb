@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="leftcolumn">
+<!--
 <p>
   <b>Name:</b>
   <%= @home.name %>
@@ -9,18 +10,38 @@
   <b>Main:</b>
   <%= @home.main %>
 </p>
-<br /><br /><br /><br /><br /><br /><br />
+
+<p>
+<%= @home.main %><br />
+
+</p>
+<p>
+<%= link_to 'Edit', edit_home_path(@home) %> |
+<%= link_to 'Back', homes_path %>
+</p>
+-->
 <!-- <div id = 'results'></div>-->
 <div id = 'preview'>
+Welcome to the backend of the Plastixs website. Please create or select a category to get started.
+</div>
+<div id="categorychosen" >
+
+<%= render (:partial => 'category.html') %>
 
 </div>
+<div id="productchosen" >
+<%= render (:partial => 'product.html') %>
+</div>
+
+
 <div id="choose1">
 <% if !@categoryname.nil? %>
 	<%= @categoryname.name %><br />	
 <% end %>
 </div>
-<%= link_to 'Edit', edit_home_path(@home) %> |
-<%= link_to 'Back', homes_path %>
+
+
+
 </div>
 <div class="rightcolumn">
 
@@ -52,43 +73,35 @@
 jQuery(function($) {
 	$('#category2').change(function() {
    //$(this).css("backgroundColor", "blue");
-   
-   
-   
-   var country = $('select#category2 :selected').val();
+   	var country = $('select#category2 :selected').val();
     if(country == "") country="0";
-   
-   jQuery.get('/homes/search/' +  country, function(data){
-        $("#results").html(data);   
-        
-      })
-    return false;
-     jQuery.get("/homes/choose/", { var1: "test" },
-  function(data){
-    $("#choose1").html(data);
-  });
+     
+   $.get('/homes/search/' +  country, function(data){	
+       $("#results").html(data);
+        });
+        $.get('/homes/choose/' +  country, function(data){	
+        $("#preview").html(data);   
+         });
+        //$("#preview" ).html( "<%= escape_javascript( render( :partial => "category.html")) %>" );
+ 
+        //jQuery.get("/homes/choose/" + country, function(data){
+    //$("#preview").html(data);
+     
+      
+    //return false;
+    
    
  });
  
  });  
  //$("#choose1" ).html(data);
- 
+  
 </script>
 <div id='results'></div>
 <div id='choose1'></div>
 
-<br />
-<br />
-
-
-
-<br />
 
 
 
 
 </div>
-
-
-
-<!-- Choosing a Category -->

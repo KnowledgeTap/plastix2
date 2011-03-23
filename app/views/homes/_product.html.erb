@@ -1,0 +1,193 @@
+<p id="notice"><%= notice %></p>
+
+<% if !@product2.nil? %>
+<div class="leftcolumn2">
+<%= image_tag ("/images/b6alum.jpg") %><br />
+<%= link_to "View Technical Information", "/almmfti.pdf" %><br />
+<%= link_to "Upload an image for this product", "#" %> <br />
+  <%= link_to "Upload a document for this product", "#" %>
+</div>
+<div class="rightcolumn2">
+<div id="choose1">
+<% if !@product2.nil? %>
+<b>Category: </b>
+<% if !@parentcat3.nil? %>
+	<%= @parentcat3.name %><br />
+
+<% elsif !@parentcat2.nil? %>
+	<%= @parentcat2.name %><br />
+	
+<% else %>
+	<% if !@parentcat.nil? %>
+		<%= @parentcat.name %>
+	<% end %>
+<% end %>	
+<% end %>
+</div>
+<div id="choose2">
+<% if !@product2.nil? %>
+
+<% if !@parentcat3.nil? %>
+	
+	<% if !@parentcat2.nil? %>
+	<b>Sub Category: </b>
+		<%= @parentcat2.name %><br />
+	<% end %>	
+<% else %>
+	<% if !@parentcat2.nil? %>
+	<% if !@parentcat.nil? %>
+	<b>Sub Category: </b>
+		<%= @parentcat.name %>
+	<% end %>
+	<% end %>
+<% end %>	
+<% end %>
+
+</div>
+
+
+
+
+<% if !@product2.nil? %>
+<% if @parentcat3.nil?  || @parentcat2.nil? %>
+
+
+<% else %>
+<% if !@parentcat.nil? %>
+<b>Sub sub Category:</b>
+	<%= @parentcat.name %>
+<% end %>	
+<% end %>
+<% end %>
+
+<br />
+<b>Product type:</b>
+<% if !@product2.nil? %>
+<%= @product2.name %>
+<% end %>
+</div>
+
+<div class="list" >
+<!--
+<p>
+  <b>Parentid:</b>
+  <%= @product2.parentid %>
+</p>
+-->
+<p>
+  <b>Product Variation Name:</b>
+  <%= @product2.name %>
+</p>
+<p>
+<b>Part No.:</b>
+<%=@product2.partno %>
+</p>
+
+
+<p>
+<b>Type:</b>
+<%=@product2.prodtype %>
+</p>
+<p>
+<b>Style:</b>
+<%=@product2.style %>
+</p>
+<p>
+<b>Inlet:</b>
+<%=@product2.inlet %>
+</p>
+<p>
+<b>Hose:</b>
+<%=@product2.hose %>
+</p>
+<p>
+<b>Plug:</b>
+<%=@product2.plug %>
+</p>
+<p>
+<b>Weight:</b>
+<%=@product2.weight %>
+</p>
+<p>
+<b>Qty.:</b>
+<%=@product2.quanity %>
+</p>
+
+
+<p>
+  <b>Model:</b>
+  <%= @product2.model %>
+</p>
+
+<p>
+  <b>Port size:</b>
+  <%= @product2.ports %>
+</p>
+<p>
+<b>No. of Ports:</b>
+<%=@product2.portno %>
+</p>
+
+
+<p>
+  <b>Valve:</b>
+  <%= @product2.valve %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @product2.color %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @product2.price %>
+</p>
+<!--
+<p>
+  <b>Category:</b>
+  <%= @product2.category_id %>
+</p>
+-->
+
+<% if !@product2.nil? %>
+<% if !@product2.parentid.nil? %>
+
+<%= link_to "Copy this Product Variation", '#', :class => 'copy2', :"data-product-id" => @product2.id, :remote => true %>
+<% else %>
+<% @productname = @product2 %>
+<%= link_to "Create a Product Variation", '#', :class => 'copy3', :"data-product-id" => @product2.id, :remote => true %>
+<% end %>
+<script>
+jQuery(function($) {
+
+	$('.copy2').click(function() {
+   //$(this).css("backgroundColor", "blue");
+   ($(this).attr('data-product-id'));
+   
+   var country = ($(this).attr('data-product-id'));
+    if(country == "") country="0";
+   
+   jQuery.get('/homes/copy/' +  country, function(data){
+        $("#results").html(data);   
+      })
+    return false;
+ });
+ });  
+</script>
+
+<script>
+	jQuery(function($) {
+	$('.copy3').click(function(){
+	($(this).attr('data-product-id'));
+	var parent = ($(this).attr('data-product-id'));
+	$( "#results" ).html( "<%= escape_javascript( render( :partial => "products/form.html" ) ) %>" );
+});
+});
+</script>
+
+<% end %>
+</div>
+<% end %>
+<br />
+<br />

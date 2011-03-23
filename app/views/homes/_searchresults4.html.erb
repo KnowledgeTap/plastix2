@@ -52,8 +52,10 @@ jQuery(function($) {
    
    jQuery.get('/homes/search2/' +  country, function(data){
         $("#results").html(data);   
-      })
-    return false;
+      });
+    $.get('/homes/choose4/' +  country, function(data){
+        $("#preview").html(data);   
+      });
  });
  });  
 

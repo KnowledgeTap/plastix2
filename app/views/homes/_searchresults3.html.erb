@@ -63,8 +63,10 @@ jQuery(function($) {
    
    jQuery.get('/homes/search4/' +  country, function(data){
         $("#results").html(data);   
-      })
-    return false;
+      });
+    $.get('/homes/choose3/' +  country, function(data){	
+        $("#preview").html(data);   
+         });
  });
  });  
 </script>
@@ -95,28 +97,31 @@ or
 <br />
 or
 <br />
-<b> Choose a product</b>
+<b> Choose a product:</b>
 
 
-<%= select_tag 'product2', options_from_collection_for_select(@products, 'id', 'name'), :include_blank => 'None', :remote => true %>
+<%= select_tag 'product3', options_from_collection_for_select(@products, 'id', 'name'), :include_blank => 'None', :remote => true %>
 
-<br />
 <script>
 jQuery(function($) {
-	$('#product2').click(function() {
+	$('#product3').change(function() {
    //$(this).css("backgroundColor", "blue");
    
-   var country = $('select#product2 :selected').val();
+   var country = $('select#product3 :selected').val();
     if(country == "") country="0";
    
    jQuery.get('/homes/search2/' +  country, function(data){
         $("#results").html(data);   
-      })
-    return false;
+      });
+    
+    $.get('/homes/choose4/' +  country, function(data){
+        $("#preview").html(data);   
+      });
+    
  });
  });  
 
 
 </script>
-<div id="results"></div>
+
 <% end %>

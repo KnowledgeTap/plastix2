@@ -1,3 +1,4 @@
+
 <div id="choose1">
 <% if !@categoryname.nil? %>
 <b>Category chosen: </b>
@@ -69,10 +70,13 @@ jQuery(function($) {
    var country = $('select#subcat :selected').val();
     if(country == "") country="0";
    
-   jQuery.get('/homes/search3/' +  country, function(data){
+   	$.get('/homes/search3/' +  country, function(data){
         $("#results").html(data);   
-      })
-    return false;
+      });
+   // return false;
+     $.get('/homes/choose2/' +  country, function(data){	
+        $("#preview").html(data);   
+         });
  });
  });  
 </script>
@@ -132,8 +136,10 @@ jQuery(function($) {
    
    jQuery.get('/homes/search2/' +  country, function(data){
         $("#results").html(data);   
-      })
-    return false;
+      });
+    $.get('/homes/choose4/' +  country, function(data){
+        $("#preview").html(data);   
+      });
  });
  });  
 

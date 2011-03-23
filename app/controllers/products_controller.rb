@@ -53,8 +53,8 @@ puts @test
 
     respond_to do |format|
       if @product.save
-      	format.html { redirect_to(:controller => 'homes', :action => 'show', :id => '1', :notice => 'Product was successfully created.') }
-
+      	#format.html { redirect_to(:controller => 'homes', :action => 'show', :id => '1', :notice => 'Product was successfully created.') }
+		format.html { redirect_to (:controller => 'homes', :action => 'show', :id => '1',  :productid => @product.id) }
         #format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else

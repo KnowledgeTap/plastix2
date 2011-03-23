@@ -1,0 +1,135 @@
+
+<div id="choose1">
+<% if !@category2.nil? %>
+<b>Main Category: </b>
+<% if !@parentcat3.nil? %>
+	<%= @parentcat3.name %><br />
+	<%= @parentcat3.description %><br />
+<% elsif !@parentcat2.nil? %>
+	<%= @parentcat2.name %><br />
+	<%= @parentcat2.description %><br />
+<% elsif %>
+	<% if !@parentcat.nil? %>
+		<%= @parentcat.name %><br />
+		<%= @parentcat.description %><br />
+	<% end %>
+<% else %>
+	<%= @category2.name %>
+<% end %>	
+<% end %>
+</div>
+<div id="choose2">
+
+
+	<% if !@parentcat3.nil? %>
+			<% if !@parentcat2.nil? %>
+			<b>Sub Category: </b>
+			
+			<%= @parentcat2.name %><br />
+			<%= @parentcat2.description %><br />
+			<% end %>
+	<% elsif !@parentcat2.nil? %>
+	<% if !@parentcat.nil? %>
+	<b>Sub Category: </b>
+			<%= @parentcat.name %><br />
+			<%= @parentcat.description %><br />
+	<% end %>		
+	<% end %>
+
+
+
+
+
+
+
+	<% if !@parentcat3.nil? %>
+			<% if !@parentcat.nil? %>
+			<b>Sub sub Category:</b>
+			
+			<%= @parentcat.name %><br />
+			<%= @parentcat.description %><br />
+			<% end %>
+	<% end %>
+	
+</div>
+<% if !@category2.nil? %>
+<p>
+<%= link_to "Upload an image for this category", "#" %> | 
+<%= link_to "Upload a document for this category", "#" %> 
+</p>  
+<% end %>
+  
+<% if !@testid.nil? %>
+<div>
+<% if !@parentcat3.nil?  && @parentcat2.nil? %>
+	
+<%= link_to "Create a New Sub Category", '#', :class => 'addWidget2', :"data-parent-id" => @category2.id, :remote => true %>
+
+<script>
+	jQuery(function($) {
+	$('.addWidget2').click(function(){
+	//($(this).attr('data-parent-id'));
+	//$( "#preview" ).html( "<%= escape_javascript( render( :partial => "categories/form.html" )) %>" );
+	
+	var country = ($(this).attr('data-parent-id'));
+    if(country == "") country="0";
+     
+   $.get('/homes/catnew/' +  country, function(data){	
+       $("#preview").html(data);
+        });
+
+});
+});
+</script>
+|
+<% end %>
+
+
+<% if !@parentcat2.nil?  && @parentcat.nil? %>
+<%= link_to "Create a New Sub Sub Category", '#', :class => 'addWidget3', :"data-parent-id" => @category2.id, :remote => true %>
+
+<script>
+	jQuery(function($) {
+	$('.addWidget3').click(function(){
+	//($(this).attr('data-parent-id'));
+	//$( "#preview" ).html( "<%= escape_javascript( render( :partial => "categories/form.html" ) ) %>" );
+	var country = ($(this).attr('data-parent-id'));
+    if(country == "") country="0";
+     
+   $.get('/homes/catnew/' +  country, function(data){	
+       $("#preview").html(data);
+        });
+
+});
+});
+</script>
+
+<% end %>
+
+<%= link_to "Create a New Product", '#', :class => 'addWidget3', :"data-parent-id" => @category2.id, :remote => true %>
+
+<script>
+	jQuery(function($) {
+	$('.addWidget3').click(function(){
+	//($(this).attr('data-parent-id'));
+	//$( "#preview" ).html( "<%= escape_javascript( render( :partial => "categories/form.html" ) ) %>" );
+	var country = ($(this).attr('data-parent-id'));
+    if(country == "") country="0";
+     
+   $.get('/homes/prodnew/' +  country, function(data){	
+       $("#preview").html(data);
+        });
+
+});
+});
+</script>
+
+
+
+<!--
+<div id="preview"></div> 
+-->
+</div>
+<% end %>
+
+

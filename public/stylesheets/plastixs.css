@@ -1,7 +1,7 @@
 .leftcolumn{
 float:left;
 text-align:left;
-width:40%;
+width:50%;
 }
 
 .rightcolumn{
@@ -9,4 +9,20 @@ float:right;
 text-align:left;
 width:40%;
 
+}
+.leftcolumn2{
+float:left;
+text-align:left;
+width:40%;
+}
+.rightcolumn2{
+float:right;
+text-align:left;
+width:60%;
+
+}
+.list{
+clear:both;
+float:left;
+width:100%;
 }

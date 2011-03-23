@@ -14,7 +14,43 @@ class HomesController < ApplicationController
   # GET /homes/1.xml
   def show
     @home = Home.find(params[:id])
+    if !params[:productid].nil? 
+    @product2 = Product.find(params[:productid])
+    puts 'This is the @product2'
+    puts @product2.name
+    if !@product2.category_id.nil?
+    @parentcat = Category.find(@product2.category_id)
     
+    if !@parentcat.parentid.nil?
+    @parentcat2 = Category.find(@parentcat.parentid)
+    if !@parentcat2.parentid.nil?
+    @parentcat3 = Category.find(@parentcat2.parentid)
+    end
+    end
+    end
+    
+    end
+    @testid = params[:categoryid]
+    if !@testid.nil?
+    @testcat = Category.find(@testid)
+    puts 'testing'
+    @category2=Category.find(params[:categoryid])
+    if !@category2.parentid.nil?
+    	@parenttest = Category.find(@category2.parentid)
+    	if !@parenttest.parentid.nil?
+    		@parentcat = @category2
+    		@parentcat2 = @parenttest
+    		@parentcat3 = Category.find(@parenttest.parentid)
+    	else
+    		@parentcat2 = @category2
+    		@parentcat3 = @parenttest
+    	end
+    else 
+    	@parentcat3 = @category2
+    end
+    
+    
+    end
     #@phrase = Category.search(params[:category]) #".search method is in the Model"
     
 	@categories = Category.all
@@ -41,7 +77,7 @@ class HomesController < ApplicationController
   # GET /homes/new
   # GET /homes/new.xml
   def new
-  @test=params[:id]
+  @test=Category.find(params[:id])
  
     @home = Home.new
 
@@ -92,7 +128,7 @@ class HomesController < ApplicationController
 def search
 
 	@test=params[:parent]
- 
+ 	puts 'test search 1'
 	@categories = Category.all
 	@category = Category.new
 	#@products = Product.all
@@ -100,7 +136,12 @@ def search
 
 if !params[:id].nil?
     @phrase = params[:id] 
+    #@category2 = Category.find(params[:id])
+    puts '@category2'
+    puts @category2
+    
     @categoryname = Category.find(@phrase)
+    @category2 = @categoryname
     @products2 =Product.find(:all, :conditions => ['category_id=?', @categoryname.id])   
 
 	@products = []
@@ -113,9 +154,19 @@ if !params[:id].nil?
 	end
 	end
 
+#prototype solution will not work with jquery
+#render :update do |page| 
+ # page.replace_html 'results', :partial => 'searchresults'
+      #Also update the preview
+  #page.replace_html 'preview', :partial => 'category'
+#end
+
+
+
 
     #render :partial => 'chosencat'
     render :partial => 'searchresults'
+    #render :partial => 'category'
 
   end
   
@@ -219,9 +270,69 @@ end
 
 
 def choosecat
-	render :partial => 'chosencat'
+	@category2 = Category.find(params[:id])
+	if !@category2.parentid.nil?
+	@parentcat = Category.find(@category2.parentid)
+	
+	if !@parentcat.parentid.nil?
+   	@parentcat2 = Category.find(@parentcat.parentid)
+    if !@parentcat2.parentid.nil?
+    @parentcat3 = Category.find(@parentcat2.parentid)
+	end
+	end
+	end
+	puts '@parentcat2'
+	puts @parentcat2
+	puts '@category2'
+	puts @category2
+	@category = Category.new
+	render :partial => 'category'
 
 end
+
+def choosecat2
+	@category2 = Category.find(params[:id])
+	@parentcat = @category2
+	if !@parentcat.parentid.nil?
+	
+	@parentcat2 = Category.find(@parentcat.parentid)
+	end
+	
+	
+	puts '@parentcat2'
+	puts @parentcat2.name
+	puts '@category2'
+	puts @category2.name
+	@category = Category.new
+	render :partial => 'category'
+
+end
+
+def choosecat3
+	@parentcat = Category.find(params[:id])
+	@parentcat2 = Category.find(@parentcat.parentid)
+	@parentcat3 = Category.find(@parentcat2.parentid)
+	@category2 = @parentcat
+	render :partial => 'category'
+end
+
+def chooseprod
+	@product2 = Product.find(params[:id])
+	if !@product2.category_id.nil?
+    @parentcat = Category.find(@product2.category_id)
+    
+    if !@parentcat.parentid.nil?
+    @parentcat2 = Category.find(@parentcat.parentid)
+    if !@parentcat2.parentid.nil?
+    @parentcat3 = Category.find(@parentcat2.parentid)
+    end
+    end
+    end
+    @products = Product.all
+    @product = Product.new
+	render :partial => 'product'
+end
+
 
 def copy
 	
@@ -237,6 +348,42 @@ def copy
 	render :partial => '/products/copy.html'
 
 end
+
+def catnew
+	@category = Category.new
+	@testid = params[:id]
+    if !@testid.nil?
+    @testcat = Category.find(@testid)
+    puts 'testing'
+    
+    @category2=Category.find(params[:id])
+    if !@category2.parentid.nil?
+    	@parenttest = Category.find(@category2.parentid)
+    	if !@parenttest.parentid.nil?
+    		@parentcat = @category2
+    		@parentcat2 = @parenttest
+    		@parentcat3 = Category.find(@parenttest.parentid)
+    	else
+    		@parentcat2 = @category2
+    		@parentcat3 = @parenttest
+    	end
+    else 
+    	@parentcat3 = @category2
+    end
+    
+    
+    end
+render :partial => '/categories/form.html'
+
+end
+
+def prodnew
+	@product = Product.new
+	
+	render :partial => '/products/form.html'
+
+end
+
 
 
 
