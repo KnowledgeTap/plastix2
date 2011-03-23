@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110322140642) do
+ActiveRecord::Schema.define(:version => 20110323175249) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(:version => 20110322140642) do
     t.string   "partno"
     t.string   "portno"
     t.string   "prodtype"
+    t.string   "custom1"
+    t.integer  "custom1check", :limit => 1
+    t.string   "custom1name"
   end
 
 end
