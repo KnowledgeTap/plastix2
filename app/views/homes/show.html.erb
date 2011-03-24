@@ -22,19 +22,25 @@
 -->
 <!-- <div id = 'results'></div>-->
 <div id = 'preview'>
+<% if @product2.nil? && @category2.nil? %>
+
 
 Welcome to the administrator pages of the Plastixs website. Please create or select a category to get started.
-</div>
-<div id="categorychosen" >
+<% end %>
+
+<% if !@category2.nil? %>
+<div class="" >
 
 <%= render (:partial => 'category.html') %>
 
 </div>
-<div id="productchosen" >
+<% end %>
+<% if @category2.nil? %>
+<div class="" >
 <%= render (:partial => 'product.html') %>
 </div>
-
-
+<% end %>
+</div>
 <div id="choose1">
 <% if !@categoryname.nil? %>
 	<%= @categoryname.name %><br />	

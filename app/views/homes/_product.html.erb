@@ -2,13 +2,12 @@
 
 <% if !@product2.nil? %>
 <p id="notice"><%= notice %></p>
-<div class="leftcolumn2">
+<div class="leftcolumn3">
 <%= image_tag ("/images/b6alum.jpg") %><br />
-<%= link_to "View Technical Information", "/almmfti.pdf" %><br />
-<%= link_to "Upload an image for this product", "#" %> <br />
-  <%= link_to "Upload a document for this product", "#" %>
+<%= link_to "View Technical Information", "/almmfti.pdf" %>
+
 </div>
-<div class="rightcolumn2">
+<div class="rightcolumn4">
 <div id="choose1">
 <% if !@product2.nil? %>
 <b>Category: </b>
@@ -66,6 +65,8 @@
 <% if !@product2.nil? %>
 <%= @product2.name %>
 <% end %>
+<br /><%= link_to "Upload an image for this product", "#" %> <br />
+  <%= link_to "Upload a document for this product", "#" %>
 </div>
 
 <div class="list" >
