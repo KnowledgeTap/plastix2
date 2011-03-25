@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323175249) do
+ActiveRecord::Schema.define(:version => 20110325002338) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20110323175249) do
     t.string   "custom1"
     t.integer  "custom1check", :limit => 1
     t.string   "custom1name"
+    t.string   "thread"
+    t.string   "flow"
   end
 
 end

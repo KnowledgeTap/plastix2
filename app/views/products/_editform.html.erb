@@ -152,6 +152,55 @@
     <% end %>
   </div>
   <div class="field">
+    <%= f.label :thread %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :thread, :value => @productname.thread %>
+    <% else %>
+    <%= f.text_field :thread %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :flow %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :flow, :value => @productname.flow %>
+    <% else %>
+    <%= f.text_field :flow %>
+    <% end %>
+  </div>
+  
+  <div class="field">
+    
+    <% if @productname.nil? %>
+    Custom Field 1 checkbox<br />
+    <%= f.check_box :custom1check %>
+    <% end %>
+  </div>
+  <% if @productname.nil? %>
+  <div class="field">
+  	Custom Field 1 Name<br />
+  	<%= f.text_field :custom1name %>
+  </div>
+  <div class="field">
+  Custom Field 1<br />
+  	<%= f.text_field :custom1 %>
+  </div>
+  <% else %>
+  
+  <% if @productname.custom1check == 1 %>
+  <div class="field">
+   <% if !@productname.nil? %>
+     <%= @productname.custom1name %><br />
+    <%= f.text_field :custom1, :value => @productname.custom1 %>
+    <% else %>
+    <%= f.text_field :custom1 %>
+    <% end %>
+  </div>
+  <% end %>
+  <% end %>
+  
+  
+  
+  <div class="field">
     <!-- <%= f.label :category_id %><br />  -->
     <% if !@productname.nil? %>
     <%= f.hidden_field :category_id, :value => @productname.category_id %>

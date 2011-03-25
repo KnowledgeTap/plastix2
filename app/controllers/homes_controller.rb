@@ -332,7 +332,14 @@ def chooseprod
     @product = Product.new
 	render :partial => 'product'
 end
+def variation
 
+	@phrase2 = params[:id] 
+    @productname = Product.find(@phrase2)
+	@parent2= Product.find(params[:id])
+	@product = Product.new
+	render :partial => '/products/form.html'
+end
 
 def copy
 	

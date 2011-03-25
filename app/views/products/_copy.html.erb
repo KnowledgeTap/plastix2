@@ -73,7 +73,7 @@
     <% end %>
   </div>
   <div class="field">
-    <%= f.label :ports %>Port Size<br />
+    Port Size<br />
     <% if !@productname.nil? %>
     <%= f.text_field :ports, :value => @productname.ports %>
     <% else %>
@@ -81,7 +81,7 @@
      <% end %>
   </div>
   <div class="field">
-    <%= f.label :portno %>No. of Ports<br />
+    No. of Ports<br />
     <% if !@productname.nil? %>
     <%= f.text_field :portno, :value => @productname.portno %>
     <% else %>
@@ -152,6 +152,42 @@
     <%= f.text_field :price %>
     <% end %>
   </div>
+  <div class="field">
+    <%= f.label :thread %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :thread, :value => @productname.thread %>
+    <% else %>
+    <%= f.text_field :thread %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :flow %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :flow, :value => @productname.flow %>
+    <% else %>
+    <%= f.text_field :flow %>
+    <% end %>
+  </div>
+  
+  <% if @productname.custom1check == 1 %>
+  	
+        <%= f.hidden_field :custom1check, :value => @productname.custom1check %>
+        <%= f.hidden_field :custom1name, :value => @productname.custom1name %>
+    
+  <div class="field">
+   <% if !@productname.nil? %>
+     <%= @productname.custom1name %><br />
+    <%= f.text_field :custom1, :value => @productname.custom1 %>
+    <% else %>
+    <%= f.text_field :custom1 %>
+    <% end %>
+  </div>
+  <% end %>
+  
+  
+  
+  
+  
   <div class="field">
     <!-- <%= f.label :category_id %><br />  -->
     <% if !@productname.nil? %>

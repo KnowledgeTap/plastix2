@@ -145,6 +145,21 @@
   <b>Price:</b>
   <%= @product2.price %>
 </p>
+<p>
+  <b>Flow Rate GPM/LPM:</b>
+  <%= @product2.flow %>
+</p>
+<p>
+  <b>Thread Size:</b>
+  <%= @product2.thread %>
+</p>
+<% if @product2.custom1check == 1 %>
+<p>
+  <b><%= @product2.custom1name %>:</b>
+  <%= @product2.custom1 %>
+</p>
+<% end %>
+
 <!--
 <p>
   <b>Category:</b>
@@ -183,7 +198,10 @@ jQuery(function($) {
 	$('.copy3').click(function(){
 	($(this).attr('data-product-id'));
 	var parent = ($(this).attr('data-product-id'));
-	$( "#results" ).html( "<%= escape_javascript( render( :partial => "products/form.html" ) ) %>" );
+	jQuery.get('/homes/variation/' +  parent, function(data){
+        $("#results").html(data);   
+      });
+	//$( "#results" ).html( "<%= escape_javascript( render( :partial => "products/form.html" ) ) %>" );
 });
 });
 </script>

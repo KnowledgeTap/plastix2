@@ -16,7 +16,11 @@
   <div class="field">
     <!-- <%= f.label :parentid %><br /> -->
     <% if !@productname.nil? %>
+    <% if !@parent2.nil? %>
+    <%= f.hidden_field :parentid, :value => @parent2.id %>
+    <% else %>
     <%= f.hidden_field :parentid, :value => params[:id] %>
+    <% end %>
     <% else %>
     <%= f.hidden_field :parentid %>
     <% end %>
@@ -152,6 +156,23 @@
     <% end %>
   </div>
   <div class="field">
+    <%= f.label :thread %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :thread, :value => @productname.thread %>
+    <% else %>
+    <%= f.text_field :thread %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :flow %><br />
+    <% if !@productname.nil? %>
+    <%= f.text_field :flow, :value => @productname.flow %>
+    <% else %>
+    <%= f.text_field :flow %>
+    <% end %>
+  </div>
+  
+  <div class="field">
     
     <% if @productname.nil? %>
     Custom Field 1 checkbox<br />
@@ -170,6 +191,8 @@
   <% else %>
   
   <% if @productname.custom1check == 1 %>
+  <%= f.hidden_field :custom1check, :value => @productname.custom1check %>
+  <%= f.hidden_field :custom1name, :value => @productname.custom1name %>
   <div class="field">
    <% if !@productname.nil? %>
      <%= @productname.custom1name %><br />

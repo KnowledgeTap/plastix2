@@ -13,6 +13,7 @@ Plastix2::Application.routes.draw do
 	match '/homes/choose3/:id', :controller =>'homes', :action => 'choosecat3'
 	match '/homes/choose4/:id', :controller =>'homes', :action => 'chooseprod'
 	match '/homes/copy/:id', :controller =>'homes', :action => 'copy'
+	match '/homes/variation/:id', :controller =>'homes', :action => 'variation'
 	match '/homes/catnew/:id', :controller =>'homes', :action => 'catnew'
 	match '/homes/prodnew/:id', :controller =>'homes', :action => 'prodnew'
 	
