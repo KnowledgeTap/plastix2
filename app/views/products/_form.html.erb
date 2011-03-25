@@ -76,7 +76,7 @@
     <% end %>
   </div>
   <div class="field">
-    <%= f.label :ports %>Port Size<br />
+    Port Size<br />
     <% if !@productname.nil? %>
     <%= f.text_field :ports, :value => @productname.ports %>
     <% else %>
@@ -84,7 +84,7 @@
      <% end %>
   </div>
   <div class="field">
-    <%= f.label :portno %>No. of Ports<br />
+    No. of Ports<br />
     <% if !@productname.nil? %>
     <%= f.text_field :portno, :value => @productname.portno %>
     <% else %>
