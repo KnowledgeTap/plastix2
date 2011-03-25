@@ -72,7 +72,7 @@
 <% end %>
 
 <br /><b>Choose a Product Variation to Copy:</b>
-<%= select_tag 'copyprod', options_from_collection_for_select(@prodvar, 'id', 'prodtype'), :include_blank => 'None', :remote => true %>
+<%= select_tag 'copyprod', options_from_collection_for_select(@prodvar, 'id', 'partno'), :include_blank => 'None', :remote => true %>
 <br />
 
 <script>
