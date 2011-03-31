@@ -113,11 +113,11 @@
 
 <% end %>
 
-<%= link_to "Create a New Product", '#', :class => 'addWidget3', :"data-parent-id" => @category2.id, :remote => true %>
+<%= link_to "Create a New Product", '#', :class => 'addWidget4', :"data-parent-id" => @category2.id, :remote => true %>
 
 <script>
 	jQuery(function($) {
-	$('.addWidget3').click(function(){
+	$('.addWidget4').click(function(){
 	//($(this).attr('data-parent-id'));
 	//$( "#preview" ).html( "<%= escape_javascript( render( :partial => "categories/form.html" ) ) %>" );
 	var country = ($(this).attr('data-parent-id'));
